@@ -1,18 +1,21 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
+    <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Jiamu Zheng from UESTC</title>
+    <title>JaamieZheng - ZJU</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
+    <link rel="stylesheet" href="assets/css/academicons.min.css"/>
+    <link rel="stylesheet" href="assets/css/academicons.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <!-- Google Analytics -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -23,7 +26,7 @@
       ga('send', 'pageview');
     </script>
 
-    <!-- New GA4 tracking code, see https://support.google.com/analytics/answer/10271001#analyticsjs-enable-basic --> 
+    <!-- New GA4 tracking code -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNJD50R0Z7"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -32,88 +35,723 @@
     gtag('config', 'G-GNJD50R0Z7');
     </script>
 
-    <!-- For all browsers -->
-    <link rel="stylesheet" href="assets/css/academicons.min.css"/>
-    <link rel="stylesheet" href="assets/css/academicons.css"/>
-
     <style>
-      button.accordion {
-      font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      cursor: pointer;
-      padding: 0px;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 100%;
-      transition: 0.3s;
-      background-color: #f8f8f8;
+      * {
+        box-sizing: border-box;
       }
-      button.accordion.active, button.accordion:hover {
-      background-color: #f8f8f8;
-      }
-      button.accordion:after {
-      content: " [+] ";
-      font-size: 90%;
-      color:#777;
-      float: left;
-      margin-left: 1px;
+      
+      body {
+        font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #fdfdfd;
       }
 
-      button.accordion.active:after {
-      content: " [\2212] ";
+      /* 横向导航栏 */
+      .top-nav {
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       }
-      div.panel {
-      padding: 0 20px;
-      margin-top: 5px;
-      display: none;
-      background-color: white;
-      font-size: 100%;
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
       }
-      div.panel.show {
-      display: block !important;
+
+      .nav-brand {
+        color: #fff;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 15px 0;
       }
-      .social-row {
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-links li {
+        margin: 0;
+      }
+
+      .nav-links a {
+        display: block;
+        color: #bbb;
+        text-decoration: none;
+        padding: 15px 20px;
+        transition: all 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #fff;
+        background-color: #555;
+      }
+
+      /* 主容器布局 */
+      .main-container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 60px auto 0;
+        padding: 20px 40px;
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 40px;
+      }
+
+      /* 左侧侧边栏 */
+      .sidebar {
+        position: sticky;
+        top: 70px;
+        height: fit-content;
+        width: 280px;
+        flex-shrink: 0;
+      }
+
+      /* 右侧内容区 */
+      .content {
+        min-width: 0;
+      }
+
+      .profile-section {
+        text-align: center;
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      }
+
+      .profile-img {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #eee;
+        margin-bottom: 12px;
+      }
+
+      .profile-name {
+        font-size: 1.3em;
+        margin: 8px 0 3px;
+        color: #333;
+      }
+
+      .profile-title {
+        color: #666;
+        font-size: 0.85em;
+        margin-bottom: 10px;
+        line-height: 1.4;
+      }
+
+      .social-links {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #f5f5f5;
+        color: #555;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1.1em;
+      }
+
+      .social-links a:hover {
+        background: #333;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      .contact-info {
+        margin-top: 15px;
+        padding: 12px;
+        background: #f9f9f9;
+        border-radius: 6px;
+        font-size: 0.8em;
+        color: #666;
+      }
+
+      .contact-info p {
+        margin: 5px 0;
+      }
+
+      /* 右侧内容区 */
+      .content {
+        min-width: 0;
+      }
+
+      .section {
+        background: #fff;
+        padding: 25px 30px;
+        /* padding-left: ; */
+        margin: 0 0 25px;   /* 上 0、左右 auto、下 25px，让 section 在右侧列中居中 */
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        width: 100%;      /* 每个 section 的最大宽度 */
+        margin-left: 120px;
+      }
+
+      .section-title {
+        font-size: 1.4em;
+        color: #333;
+        margin: 0 0 20px 0;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #eee;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .section-title i {
+        color: #666;
+      }
+
+      /* 时间轴样式 */
+      .timeline {
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 8px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #ddd;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 25px;
+      }
+
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -26px;
+        top: 5px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #333;
+        border: 2px solid #fff;
+      }
+
+      .timeline-date {
+        font-size: 0.85em;
+        color: #888;
+        margin-bottom: 5px;
+      }
+
+      .timeline-title {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 3px;
+      }
+
+      .timeline-subtitle {
+        font-size: 0.95em;
+        color: #666;
+        margin-bottom: 8px;
+      }
+
+      .timeline-description {
+        font-size: 0.9em;
+        color: #555;
+      }
+
+      /* 教育经历卡片 */
+      .education-item {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .education-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .education-logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        background: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8em;
+        color: #888;
+        flex-shrink: 0;
+      }
+
+      .education-info h4 {
+        margin: 0 0 5px 0;
+        color: #333;
+      }
+
+      /* 教育经历学校名称 */
+      #education .education-info h4 {
+        font-size: 1.2em;
+        font-weight: 700;
+      }
+
+      .education-info .degree {
+        color: #666;
+        font-size: 0.95em;
+        margin-bottom: 5px;
+      }
+
+      .education-info .period {
+        font-size: 0.85em;
+        color: #888;
+      }
+
+      /* 荣誉列表 */
+      .honors-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .honors-list li {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
         justify-content: space-between;
+        align-items: center;
+      }
+
+      .honors-list li:last-child {
+        border-bottom: none;
+      }
+
+      .honor-name {
+        color: #333;
+      }
+
+      .honor-year {
+        color: #888;
+        font-size: 0.9em;
+      }
+
+      /* 论文列表 */
+      .publication-item {
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .publication-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .pub-title {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      .pub-authors {
+        font-size: 0.9em;
+        color: #555;
+        margin-bottom: 5px;
+      }
+
+      .pub-venue {
+        font-size: 0.9em;
+        color: #666;
+        font-style: italic;
+        margin-bottom: 8px;
+      }
+
+      .pub-abstract {
+        font-size: 0.9em;
+        color: #666;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+
+      .pub-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .pub-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.85em;
+        color: #0066cc;
+        text-decoration: none;
+      }
+
+      .pub-links a:hover {
+        text-decoration: underline;
+      }
+
+      /* Others 区块 */
+      .others-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+      }
+
+      .other-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+        background: #f9f9f9;
+        border-radius: 6px;
+      }
+
+      .other-item i {
+        font-size: 1.3em;
+        color: #666;
+      }
+
+      /* 关于我 */
+      .about-text {
+        color: #555;
+        line-height: 1.7;
+      }
+
+      .research-interests {
+        margin-top: 15px;
+      }
+
+      .research-interests span {
+        display: inline-block;
+        background: #f0f0f0;
+        padding: 5px 12px;
+        border-radius: 15px;
+        font-size: 0.85em;
+        color: #555;
+        margin: 3px;
+      }
+
+      /* 响应式设计 */
+      @media (max-width: 768px) {
+        .main-container {
+          grid-template-columns: 1fr;
+          margin-top: 120px;
+          padding: 15px;
+        }
+
+        .sidebar {
+          position: static;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+        }
+
+        .nav-links a {
+          padding: 10px 12px;
+          font-size: 0.9em;
+        }
+
+        .profile-img {
+          width: 150px;
+          height: 150px;
+        }
+
+        .section {
+          padding: 20px;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Jiamu Zheng</h1>
-        <p>Undergraduate of Software Engineering<br>University of Electronic Science and Technology of China (UESTC)</p>
-        <!-- <p>Research Affiliate<br><a href="http://legacy.iza.org/en/webcontent/personnel/photos/index_html?key=24155">Institute for the Study of Labor (IZA)</a></p> -->
-        <!-- <p>Fellow<br><a href="https://glabor.org/user/tyleransom/">Global Labor Organization (GLO)</a></p> -->
-    <h3><a href="https://jaamiezheng.github.io/">Home</a></h3>
-        <h3><a href="https://jaamiezheng.github.io/research.html">Research Experience</a></h3>
-    <h3><a href="https://jaamiezheng.github.io/research/CV.pdf">CV</a></h3>  
-        <!-- <h3><a href="JaamieZheng.github.io/code.html">Code</a></h3>  -->
-        <!-- <h3><a href="https://tyleransom.github.io/teaching.html">Teaching</a></h3>  -->
-        <!-- <h3><a href="https://tyleransom.github.io/personal.html">Personal</a></h3> -->
-    <b>Social</b><br>
-        <div class="social-row">
-          <a href="zhengjaamie@gmail.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
-          <!-- <a href="https://scholar.google.com/citations?user=eohlTTcAAAAJ&hl=en" target="_blank"><i class="ai ai-fw ai-google-scholar-square"></i> Scholar</a><br> -->
-          <a href="https://orcid.org/0009-0006-3192-3774"><i class="ai ai-fw ai-orcid-square"></i> ORCID</a><br>
-          <!-- <a href="http://ideas.repec.org/f/pra541.html"><i class="ai ai-fw ai-ideas-repec-square"></i> RePEc</a><br> -->
-          <a href="https://github.com/JaamieZheng"><i class="fa fa-fw fa-github-square"></i> GitHub</a><br>
-          <!-- <a href="http://twitter.com/tyleransom" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br> -->
-          <!-- <a href="http://linkedin.com/in/tyleransom" class="author-social" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a><br> -->
-          <br>
-        </div>
-        <br>
+    <!-- 横向导航栏 -->
+    <nav class="top-nav">
+      <div class="nav-container">
+        <a href="#" class="nav-brand">JaamieZheng's Homepage</a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#honors">Honors</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#others">Others</a></li>
+        </ul>
+      </div>
+    </nav>
 
-    <p><b>Contact:</b><br>School of Information And Software Engineering<br>University of Electronic Science and Technology of China (UESTC)<br>No.4,Section 2,North Jianshe Road,Chengdu,P.R.China<br></p>
-    <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </header>
-      <section>
-      <img src="zhengjianzhao.jpg" height="250" width="250" alt="ZhengJiamu"></h3>
-      <p>I am currently an undergraduate of <a href="https://sise.uestc.edu.cn/index.htm">SISE</a> at the <a href="https://www.uestc.edu.cn/">UESTC</a></p>
-      <p>My research interests include Deep Learning, LLMs security, Recommend System and so on. Currently , I am working on the research of collaborative knowledge editing.
-      </section>
+    <div class="main-container">
+      <!-- 左侧侧边栏 -->
+      <aside class="sidebar">
+        <div class="profile-section">
+          <img src="personal2.jpg" alt="Zheng Jiamu" class="profile-img">
+          <h1 class="profile-name">Jiamu Zheng</h1>
+          <p class="profile-title">M.E. in AI @ ZJU (24') <br> B.E. in SE @ UESTC (20')</p>
+
+          <!-- 社交链接 -->
+          <div class="social-links">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=zhengjaamie@gmail.com" title="发送邮件" target="_blank">
+              <i class="fa fa-envelope-square"></i>
+            </a>
+            <a href="https://orcid.org/0009-0006-3192-3774" title="ORCID" target="_blank">
+              <i class="ai ai-orcid"></i>
+            </a>
+            <a href="https://github.com/JaamieZheng" title="GitHub" target="_blank">
+              <i class="fa fa-github"></i>
+            </a>
+            <a href="https://scholar.google.com/citations?user=Bv0_BLwAAAAJ&hl=zh-CN" title="Google Scholar" target="_blank">
+              <i class="ai ai-google-scholar"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jaamiezheng" title="LinkedIn" target="_blank">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          </div>
+
+          <!-- 联系方式 -->
+          <div class="contact-info">
+            <p><strong>Contact:</strong></p>
+            <p>School of Software Technology</p>
+            <p>Zhejiang University</p>
+            <p>Hangzhou, P.R. China</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 右侧主要内容 -->
+      <main class="content">
+        <!-- 关于我 -->
+        <section id="about" class="section">
+          <h2 class="section-title"><i class="fa fa-user"></i> About Me</h2>
+          <p class="about-text">
+            I am currently a Master's student in Artificial Intelligence at <a href="https://www.zju.edu.cn/">Zhejiang University (ZJU)</a> (expected graduation in 2027), advised by <a href="https://tydusky.github.io/">Prof. Tianyu Du</a> and <a href="https://person.zju.edu.cn/sji">Prof. Shouling Ji</a> in the <a href="https://nesa.zju.edu.cn/index.html">NESA Lab</a>. I received my Bachelor's degree in Software Engineering from <a href="https://www.uestc.edu.cn/">University of Electronic Science and Technology of China (UESTC)</a> in 2024.
+          </p>
+          <p class="about-text">
+            My research interests include Knowledge Editing, Interpretable and Controllable Generation, LLMs Security.
+          </p>
+          <div class="research-interests">
+            <strong>Research Interests:</strong>
+            <span>Knowledge Editing</span>
+            <span>Interpretable and Controllable Generation</span>
+            <span>LLMs Security</span>
+          </div>
+          <p style="
+              font-size: 1.0em;
+              font-weight: 500;
+              color: #2c3e50;
+              border-left: 4px solid #3498db;
+              padding: 10px 15px;
+              background: #f8fafc;
+              margin: 10px 0;
+              line-height: 1.4;">
+              <span style="background: #3498db; color: white; padding: 2px 10px; border-radius: 4px; font-size: 0.8em;">📢 NOTICE</span>
+              <span style="margin-left: 10px;"> I am actively looking for 2026 internship opportunities !</span>
+          </p>
+        </section>
+
+        <!-- 教育经历 -->
+        <section id="education" class="section">
+          <h2 class="section-title"><i class="fa fa-graduation-cap"></i> Education</h2>
+          
+          <div class="education-item">
+            <div class="education-logo"><img src="data\zju.svg" alt="ZJU" style="width:100%;height:100%;object-fit:contain;"></div>
+            <div class="education-info">
+              <h4><strong>Zhejiang University</strong></h4>
+              <p class="degree">Master's in Artificial Intelligence, <a href="http://www.cst.zju.edu.cn/index.htm" target="_blank">School of Software Technology</a></p>
+              <p class="degree">Advisor: <a href="https://tydusky.github.io/">Prof. Tianyu Du</a> & <a href="https://person.zju.edu.cn/sji">Prof. Shouling Ji</a></p>
+              <p class="period">2024 - 2027 (Expected)</p>
+            </div>
+          </div>
+
+          <div class="education-item">
+            <div class="education-logo"><img src="data\UESTC.png" alt="UESTC" style="width:100%;height:100%;object-fit:contain;"></div>
+            <div class="education-info">
+              <h4><strong>University of Electronic Science and Technology of China</strong></h4>
+              <p class="degree">Bachelor's in Software Engineering, <a href="https://sise.uestc.edu.cn/" target="_blank">School of Information and Software Engineering</a></p>
+              <p class="degree">Advisor: <a href="https://www.scse.uestc.edu.cn/info/1081/10967.htm">Prof. Bo Yang</a></p>
+              <p class="period">2020 - 2024</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 专业经历 -->
+        <section id="experience" class="section">
+          <h2 class="section-title"><i class="fa fa-briefcase"></i> Professional Experience</h2>
+          
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">2024.01 - Present</div>
+              <div class="timeline-title">Westlake University - Research Intern (RI)</div>
+              <div class="timeline-subtitle">LINs Lab, Advisor: Prof. Tao Lin</div>
+              <div class="timeline-description">
+                Research on collaborative-LLMs, Knowledge Editing, and Text-to-image generation, VAR.
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">2025.02 - 2025.09</div>
+              <div class="timeline-title">Alibaba Cloud - Research Intern (RI)</div>
+              <div class="timeline-subtitle">Feitian AI Lab, Advisor: Ze Chen, Zhihang Fu</div>
+              <div class="timeline-description">
+                
+                Worked on NL2SQL, Agentic Workflow, and LLM applications. 
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">2024.03 - 2024.06</div>
+              <div class="timeline-title">Qiniu Cloud - Frontend Development Engineer Intern</div>
+              <div class="timeline-subtitle">Remote</div>
+              <div class="timeline-description">
+                Developed frontend applications using Next.js, Vue, and Vercel.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 荣誉 -->
+        <section id="honors" class="section">
+          <h2 class="section-title"><i class="fa fa-trophy"></i> Honors & Awards (Selected)</h2>
+          
+          <ul class="honors-list">
+            <li>
+              <span class="honor-name">Outstanding Graduate of Sichuan Province (Top 3%)</span>
+              <span class="honor-year">2024</span>
+            </li>
+            <li>
+              <span class="honor-name">Runner-up, Qiniu 1024 Campus Programming Marathon Finals</span>
+              <span class="honor-year">2024</span>
+            </li>
+            <li>
+              <span class="honor-name">Top 14% Globally, IEEE Xtreme 24-Hour Programming Challenge</span>
+              <span class="honor-year">2023</span>
+            </li>
+            <li>
+              <span class="honor-name">Best Performance Award, Nanjing University NLP Summer Camp</span>
+              <span class="honor-year">2022</span>
+            </li>
+            <!-- <li>
+              <span class="honor-name">Provincial & University-Level Awards in Computer Design, E-Commerce Innovation, and Network Technology Competitions</span>
+              <span class="honor-year">2022-2023</span>
+            </li> -->
+          
+          </ul>
+        </section>
+
+        <!-- 论文发表 -->
+        <section id="publications" class="section">
+          <h2 class="section-title"><i class="fa fa-book"></i> Publications</h2>
+          
+          <!-- 论文1 - 示例 -->
+          <div class="publication-item">
+            <div class="pub-title">CollabEdit: Towards Non-destructive Collaborative Knowledge Editing</div>
+            <div class="pub-authors"><strong>Jiamu Zheng</strong>, Jinghuai Zhang, Tianyu Du, Xuhong Zhang, Jianwei Yin, Tao Lin</div>
+            <div class="pub-venue"> International Conference on Learning Representations <b>(ICLR'25)</b></div>
+            <!-- <div class="pub-abstract">
+              [Please add paper abstract or brief introduction]
+            </div> -->
+            <div class="pub-links">
+              <a href="https://arxiv.org/pdf/2410.09508" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a>
+              <a href="https://github.com/LINs-lab/CollabEdit" target="_blank"><i class="fa fa-github"></i> Code</a>
+            </div>
+          </div>
+
+          <!-- 论文2 - 示例
+          <div class="publication-item">
+            <div class="pub-title">Paper Title 2</div>
+            <div class="pub-authors">Author 1, <strong>Jiamu Zheng</strong>, Author 3</div>
+            <div class="pub-venue">Conference/Journal Name, 2023</div>
+            <div class="pub-abstract">
+              [Please add paper abstract or brief introduction]
+            </div>
+            <div class="pub-links">
+              <a href="research/CV.pdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a>
+            </div>
+          </div> -->
+
+          <!-- 添加更多论文可以复制上面的 publication-item -->
+          <!-- 也可以从 publications.json 动态加载 -->
+        </section>
+
+        <!-- 其他 -->
+        <section id="others" class="section">
+          <h2 class="section-title"><i class="fa fa-heart"></i> Others</h2>
+          
+          <div class="others-grid">
+            <div class="other-item">
+              <i class="fa fa-music"></i>
+              <span>Music</span>
+            </div>
+            <div class="other-item">
+              <i class="fa fa-futbol-o"></i>
+              <span>Sports</span>
+            </div>
+            <!-- <div class="other-item">
+              <i class="fa fa-book"></i>
+              <span>Reading</span>
+            </div> -->
+            <div class="other-item">
+              <i class="fa fa-gamepad"></i>
+              <span>Gaming</span>
+            </div>
+            <div class="other-item">
+              <i class="fa fa-plane"></i>
+              <span>Travel</span>
+            </div>
+            <div class="other-item">
+              <i class="fa fa-camera"></i>
+              <span>Photography</span>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
+
     <script src="javascripts/scale.fix.js"></script>
+    
+    <!-- 平滑滚动 -->
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
